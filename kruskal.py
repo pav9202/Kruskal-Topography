@@ -1,7 +1,10 @@
 from PIL import Image, ImageFilter
+import copy
 
 parent = dict()
 rank = dict()
+
+MST_atEachStage=[]
 
 def make_set(vertice):
     parent[vertice] = vertice
@@ -29,17 +32,25 @@ def kruskal(graph):
     minimum_spanning_tree = set()
     edges = list(graph['edges'])
     edges.sort()
+    print len(edges)
     for edge in edges:
-        weight, vertice1, vertice2 = edge
+        weight, vertice1, vertice2, vertice1Loc, vertice2Loc = edge
         if find(vertice1) != find(vertice2):
             union(vertice1, vertice2)
             minimum_spanning_tree.add(edge)
+            location = (vertice1Loc, vertice2Loc)
+            MST_atEachStage.append(location)
     return minimum_spanning_tree
 
 graph = {
         'vertices': [],
         'edges': set([])
         }
+# minimum_spanning_tree = set([
+#             (1, 'A', 'B'),
+#             (2, 'B', 'D'),
+#             (1, 'C', 'D'),
+#             ])
 
 #print(kruskal(graph) == minimum_spanning_tree)
 
@@ -53,21 +64,35 @@ for i in range(0,width):
     for j in range(0,height):
         r, g, b = original.getpixel((i, j))
         n = r*(pow(256,2)) + g*256 + b # Convert RGB to an integer representation
-        graph['vertices'].append(str(n)) #str((i*width)+j) # Add RBG integer value of pixel to the graph as a vertex
+        graph['vertices'].append(str(n)) # Add RBG integer value of pixel to the graph as a vertex
+
+
+for i in range(0,width):
+    for j in range(0,height):
         #add Edges to the graph that represent differences between pixels
         if(i>0):
-            v = graph['vertex'][((i-1)*width)+j]
-            graph['edges'].add((abs(n-int(v)),str(n),v))
-        if(i<width-1):
-            v = graph['vertex'][((i+1)*width)+j]
-            graph['edges'].add((abs(n-int(v)),str(n),v))
+            v = graph['vertices'][((i-1)*width)+j]
+            n =int(graph['vertices'][(i*width)+j])
+            graph['edges'].add((abs(n-int(v)),str(n),v,str(i)+','+str(j),str((i-1))+','+str(j)))
+        if(i<(width-1)):
+            v = graph['vertices'][((i+1)*width)+j]
+            n =int(graph['vertices'][(i*width)+j])
+            graph['edges'].add((abs(n-int(v)),str(n),v,str(i)+','+str(j),str((i+1))+','+str(j)))
         if(j>0):
-            v = graph['vertex'][(i*width)+(j-1)]
-            graph['edges'].add((abs(n-int(v)),str(n),v))
+            v = graph['vertices'][(i*width)+(j-1)]
+            n =int(graph['vertices'][(i*width)+j])
+            graph['edges'].add((abs(n-int(v)),str(n),v,str(i)+','+str(j),str(i)+','+str((j-1))))
         if(j<height-1):
-            v = graph['vertex'][(i*width)+(j+1)]
-            graph['edges'].add((abs(n-int(v)),str(n),v))
-        
+            v = graph['vertices'][(i*width)+(j+1)]
+            n =int(graph['vertices'][(i*width)+j])
+            graph['edges'].add((abs(n-int(v)),str(n),v,str(i)+','+str(j),str(i)+','+str((j+1))))
+      
+kruskal(graph)
+
+print len(graph['edges'])
+print MST_atEachStage 
+
+
 
 
 
