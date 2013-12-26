@@ -92,6 +92,37 @@ kruskal(graph)
 print len(graph['edges'])
 print MST_atEachStage 
 
+pixelValues = [[None for x in range(width)] for y in range(height)] #[height][width]
+pixelsCovered = set()
+count = 0
+for t in MST_atEachStage:
+    pixelsCovered.add(t[0])
+    pixelsCovered.add(t[1])
+    a,b = t[0].split(',')
+    # print t
+    # print str(a) +','+str(b)
+    # print len(pixelsCovered)
+    # raw_input()
+    if(pixelValues[int(a)][int(b)]==None):
+        pixelValues[int(a)][int(b)] = count
+    a,b = t[1].split(',')
+    if(pixelValues[int(a)][int(b)]==None):
+        pixelValues[int(a)][int(b)] = count
+
+    count+=1
+    if(len(pixelsCovered)==(width*height)):
+        break
+
+print '\n'
+print count
+print (width*height)
+raw_input()
+saved = open('topography.txt','w')
+print '\n\n\n\n'
+print pixelValues
+
+saved.write(pixelValues)
+
 
 
 
