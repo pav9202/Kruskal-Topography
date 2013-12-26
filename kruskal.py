@@ -130,7 +130,7 @@ edges = []
 verticesValues = []
 
 try:
-    original = Image.open("john.png")
+    original = Image.open("personInFocus.png")
 except:
     print "Unable to load image"
 
@@ -152,19 +152,19 @@ for i in range(0,width):
         if(i>0):
             v = verticesValues[((i-1)*height)+j]
             n =int(verticesValues[(i*height)+j])
-            edges.append((str(i)+','+str(j),str((i-1))+','+str(j),abs(n-int(v))))
+            edges.append((str(i)+','+str(j),str((i-1))+','+str(j),n)) #pow((n-int(v)),2)
         if(i<(width-1)):
             v = verticesValues[((i+1)*height)+j]
             n =int(verticesValues[(i*height)+j])
-            edges.append((str(i)+','+str(j),str((i+1))+','+str(j),abs(n-int(v))))
+            edges.append((str(i)+','+str(j),str((i+1))+','+str(j),n))
         if(j>0):
             v = verticesValues[(i*height)+(j-1)]
             n =int(verticesValues[(i*height)+j])
-            edges.append((str(i)+','+str(j),str(i)+','+str((j-1)),abs(n-int(v))))
+            edges.append((str(i)+','+str(j),str(i)+','+str((j-1)),n))
         if(j<height-1):
             v = verticesValues[(i*height)+(j+1)]
             n =int(verticesValues[(i*height)+j])
-            edges.append((str(i)+','+str(j),str(i)+','+str((j+1)),abs(n-int(v))))
+            edges.append((str(i)+','+str(j),str(i)+','+str((j+1)),n))
 
 print 'Length of nodes:'
 print len(nodes)
