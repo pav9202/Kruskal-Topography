@@ -8,3 +8,5 @@ A result is shown here for an image of a person on a white background. The visua
 
 <img src="/john.png" align="center" width="600px" />
 <img src="/john_top.png" align="center" width="700px" />
+
+The image is not mine and was taken from: http://www.nashvilleinjuryattorneysblog.com/Jonathan%20white%20background.JPG
