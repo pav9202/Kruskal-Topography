@@ -19,6 +19,7 @@ And with a little thresholding: <img src="/personInFocus_top_thresholded.png" al
 Now those were the results of using the different of pixel values as the edge weights. When using values of one of the pixels on the edge we get the resultant image.
 
 <img src="/personInFocus_top2.png" align="center" width="450px" />
+<img src="/personInFocus_top2_thresholded.png" align="center" width="450px" />
 
 
 
