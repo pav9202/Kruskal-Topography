@@ -11,6 +11,7 @@ A result is shown here for an image of a person on a white background. The visua
 
 Another test image: 
 <img src="/personInFocus.png" align="center" width="300px" />
+
 Heatmap: <img src="/personInFocus_top.png" align="center" width="300px" />
 
 And with a little thresholding: <img src="/personInFocus_top_thresholded.png" align="center" width="300px" />
