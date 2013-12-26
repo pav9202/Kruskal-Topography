@@ -16,5 +16,10 @@ Heatmap: <img src="/personInFocus_top.png" align="center" width="450px" />
 
 And with a little thresholding: <img src="/personInFocus_top_thresholded.png" align="center" width="450px" />
 
+Now those were the results of using the different of pixel values as the edge weights. When using values of one of the pixels on the edge we get the resultant image.
+
+<img src="/personInFocus_top2.png" align="center" width="450px" />
+
+
 
 The image is not mine and was taken from: http://www.nashvilleinjuryattorneysblog.com/Jonathan%20white%20background.JPG
