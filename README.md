@@ -6,5 +6,5 @@ We take advantage of the fact that during iterations of Kruskal's minimum spanni
 
 A result is shown here for an image of a person on a white background. The visualization is a heatmap of the values generated for each pixel. Going from low to high, blue to red.
 
-<img src="/john.png" align="right" width="300px" />
-<img src="/john_top.png" align="right" width="300px" />
+<img src="/john.png" align="center" width="600px" />
+<img src="/john_top.png" align="center" width="700px" />
